@@ -1,3 +1,4 @@
-grpcio==1.62.1
-grpcio-tools==1.62.1
+setuptools
+grpcio
+grpcio-tools
 psycopg2-binary==2.9.9
