@@ -4,7 +4,18 @@ import psycopg2
 import psycopg2.extras
 from concurrent import futures
 
-# These are generated dynamically by build.sh at deployment
+# Auto-compile the .proto file into Python classes before starting
+if not os.path.exists("library_pb2.py"):
+    from grpc_tools import protoc
+    protoc.main((
+        '',
+        '-I.',
+        '--python_out=.',
+        '--grpc_python_out=.',
+        'library.proto'
+    ))
+
+# Now import the freshly generated files
 import library_pb2
 import library_pb2_grpc
 
